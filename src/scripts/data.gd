@@ -19,6 +19,6 @@ var array_eventtemplatetext = [
 	"Should I add a/an [item] to the hatchery?" #yes/no prompt indicator, makes buttons visible
 ]
 
-const DIALOGS: Dictionary[int, Array] = {
-	1: ["This is some text", "It'll be output on the dialog panel", "Might make automated tool to add these faster"]
+const DIALOGS: Dictionary[int, String] = {
+	1: "This is some text\n It'll be output on the dialog panel\n Might make automated tool to add these faster"
 }

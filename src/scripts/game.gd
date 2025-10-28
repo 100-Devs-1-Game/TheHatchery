@@ -1,12 +1,12 @@
 extends Control
 
-@onready var clickvalue = D.clickvalue
+@onready var clickvalue = Data.clickvalue
 
-@onready var eggclickable = D.eggclickable
-@onready var clicks = D.clicks
-@onready var tutorialview = D.tutorialview
+@onready var eggclickable = Data.eggclickable
+@onready var clicks = Data.clicks
+@onready var tutorialview = Data.tutorialview
 
-@onready var event1 = D.array_eventtemplatetext
+@onready var event1 = Data.array_eventtemplatetext
 
 
 #func _ready():
