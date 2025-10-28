@@ -25,14 +25,16 @@ func _process(_delta):
 
 
 func _on_lightswitch_pressed():
-	if $Darkness.visible == true:
-		$Darkness.visible = false
-	else:
-		#intended as a reset, refer to line 33 on fail
-		get_tree().quit
-		#manual resetting on lightswitch
-		$Darkness.visible = true
-		#reset click count
+	# NOTE (Galesy): Commented out for a better solution, do lmk if this needs reverting
+	#if $Darkness.visible == true:
+		#$Darkness.visible = false
+	#else:
+		##intended as a reset, refer to line 33 on fail
+		##get_tree().quit() NOTE (Galesy): Is this supposed to be here? This will close the game, commenting till i ask abt this 
+		##manual resetting on lightswitch
+		#$Darkness.visible = true
+		##reset click count
+	$Darkness.visible = !$Darkness.visible
 
 
 func _on_click_target_pressed():
