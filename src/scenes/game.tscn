@@ -1,20 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dijj7msso558g"]
+[gd_scene load_steps=6 format=3 uid="uid://dijj7msso558g"]
 
-[ext_resource type="Script" uid="uid://dljbefbqotbh5" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://dljbefbqotbh5" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://nktkc3bvtxrg" path="res://assets/WIPhatcheryscene3d.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dnn1ow1ykcf8t" path="res://scenes/debug.tscn" id="2_yqjtg"]
 
-[sub_resource type="Gradient" id="Gradient_yqjtg"]
-offsets = PackedFloat32Array(0, 0.957219, 1)
-colors = PackedColorArray(0, 0, 1, 1, 0.960784, 0, 0.960784, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_lnu2h"]
+colors = PackedColorArray(0, 0, 0, 0.196078, 0, 0, 0, 0.196078)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_lnu2h"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lbhrr"]
+gradient = SubResource("Gradient_lnu2h")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lbhrr"]
-width = 100
-height = 100
-color_ramp = SubResource("Gradient_yqjtg")
-noise = SubResource("FastNoiseLite_lnu2h")
-
-[node name="Control" type="Control"]
+[node name="GAME" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,29 +19,126 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uwrxv")
 
-[node name="ClickTarget" type="TextureButton" parent="."]
+[node name="PROXYenvr" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.456597
-anchor_top = 0.422839
-anchor_right = 0.543403
-anchor_bottom = 0.57716
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = SubResource("NoiseTexture2D_lbhrr")
+texture = ExtResource("2_lnu2h")
+stretch_mode = 5
+
+[node name="Egg" type="AnimatedSprite2D" parent="."]
+visible = false
+
+[node name="MP3PlayerScreen" type="AnimatedSprite2D" parent="."]
+visible = false
+
+[node name="DEBUG" parent="." instance=ExtResource("2_yqjtg")]
+layout_mode = 1
+
+[node name="ClickTarget" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -165.0
+offset_right = 178.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("GradientTexture2D_lbhrr")
 ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ResearchNotesProp" type="ColorRect" parent="."]
+layout_mode = 2
+anchor_left = 0.274479
+anchor_top = 0.037963
+anchor_right = 0.725521
+anchor_bottom = 0.952778
+offset_top = -1.0
+offset_bottom = -1.0
+color = Color(0.999735, 1, 0.90019, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="ResearchNotesText" type="RichTextLabel" parent="ResearchNotesProp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 42.0
+offset_right = -34.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec justo odio, lobortis sed convallis vel, pellentesque fringilla diam. Nam consectetur vestibulum ultricies. Curabitur aliquet, lectus ut dictum vehicula, dolor diam ultrices mi, eget mattis tortor sem lobortis neque. Maecenas suscipit dapibus massa sed porttitor. Sed pulvinar libero ut volutpat euismod. Vivamus iaculis leo quis leo laoreet, vitae lacinia erat dictum. Pellentesque eget pretium justo. Fusce vitae neque augue.
+
+Sed quis arcu quam. Etiam faucibus ligula sit amet dolor facilisis tristique eget in orci. Morbi elementum nunc sit amet lorem dapibus, nec faucibus metus scelerisque. Nullam molestie lacus est, a pulvinar augue luctus gravida. Fusce sollicitudin, tortor eu ultrices mattis, libero ligula lacinia urna, non dignissim elit leo in lacus. Curabitur sollicitudin tincidunt risus sit amet imperdiet. Integer vel turpis eget est congue fermentum efficitur in ex. Curabitur vel nulla sodales, malesuada justo a, porttitor leo.
+
+Maecenas eu sem posuere, placerat est sed, feugiat nulla. Curabitur scelerisque pellentesque velit, varius hendrerit enim iaculis ac. Suspendisse ultricies vehicula nunc, sit amet tristique augue viverra eu. Morbi non eleifend erat, vel fringilla arcu. Phasellus at quam ut turpis molestie ultrices. Aliquam nunc felis, laoreet sed erat in, dignissim commodo tellus. In dapibus justo eu urna lacinia, placerat sodales libero porttitor. Etiam vitae feugiat lacus. Nunc posuere auctor ullamcorper. Curabitur faucibus aliquet lorem, a lobortis justo dictum eget. Nullam tempus velit in nulla aliquam elementum. Morbi imperdiet justo lorem, et porta sapien pellentesque at. Donec facilisis, ligula quis congue cursus, erat mauris cursus ipsum, a ornare nunc eros vel nibh.
+
+Aliquam diam ante, facilisis vitae maximus at, vestibulum quis diam. Donec id interdum magna, at rhoncus risus. Nam vitae quam tincidunt, interdum metus a, laoreet lorem. Aliquam erat volutpat. Nam bibendum blandit sapien ac eleifend. Cras commodo nibh eu leo interdum, tempor dignissim enim malesuada. Nam egestas ante et ante placerat, nec elementum justo malesuada. Phasellus turpis diam, dictum at turpis vehicula, placerat mollis sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In fermentum rhoncus mattis. Donec sed orci in leo venenatis varius efficitur nec sapien. Fusce elit nunc, vulputate id quam quis, sagittis hendrerit neque. Praesent faucibus nisi diam, non tempus tortor tempor et. Pellentesque nec posuere ipsum. Fusce id eros sed mi posuere laoreet consectetur id purus.
+
+Vestibulum turpis velit, facilisis non quam a, porta laoreet arcu. Integer vitae diam enim. Vestibulum tincidunt nisi nisl, eu pharetra nibh egestas vitae. Proin euismod auctor arcu, sit amet tempor neque euismod nec. Vivamus rutrum dui nunc, sit amet viverra ex pretium et. Cras vitae est non nibh interdum finibus ac quis eros. Phasellus blandit malesuada justo quis vehicula. Nulla pellentesque tellus eros, quis luctus neque gravida nec. In aliquet orci at magna posuere finibus. Nullam laoreet libero id venenatis convallis. Quisque tincidunt, quam et porta ornare, mauris ligula aliquam urna, vitae vehicula risus lectus at turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;"
+tab_size = 8
+
+[node name="ResearchNotesButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -433.0
+offset_top = -79.0
+offset_right = 433.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "research notes"
+
+[node name="ClickCounter" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -163.0
+offset_top = 54.0
 offset_right = 163.0
-offset_bottom = 67.0
+offset_bottom = 121.0
 grow_horizontal = 2
-text = "this text does not work"
+text = "this text does not work
+ROOT GAME VER."
 horizontal_alignment = 1
 
+[node name="Darkness" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Lightswitch" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 141.0
+offset_top = -156.0
+offset_right = 431.0
+grow_vertical = 0
+text = "lightswitch"
+
 [connection signal="pressed" from="ClickTarget" to="." method="_on_click_target_pressed"]
+[connection signal="pressed" from="ResearchNotesButton" to="." method="_on_research_notes_pressed"]
+[connection signal="pressed" from="Lightswitch" to="." method="_on_lightswitch_pressed"]
