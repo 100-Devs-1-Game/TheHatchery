@@ -25,6 +25,7 @@ func _ready() -> void:
 
 
 func display_text(index: int):
+	show()
 	#grab the string from Data and set label text to fetched string
 	var fetched = Data.DIALOGS.get(index)
 	if fetched:

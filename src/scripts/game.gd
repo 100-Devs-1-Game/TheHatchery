@@ -8,6 +8,10 @@ extends Control
 
 @onready var event1 = Data.array_eventtemplatetext
 
+@onready var click_counter: Label = $ClickCounter
+@onready var darkness: ColorRect = $Darkness
+@onready var dialog: Control = $Dialog
+
 
 #func _ready():
 	#dark = true
@@ -17,9 +21,9 @@ func _process(_delta):
 	# NOTE: DISPLAYS CURRENT CLICK VALUE
 	#$Label.text = "%d clicks" % int(clicks)
 	if clicks == 1:
-		$ClickCounter.text = str(clicks) + " click"
+		click_counter.text = str(clicks) + " click"
 	else:
-		$ClickCounter.text = str(clicks) + " clicks"
+		click_counter.text = str(clicks) + " clicks"
 	
 	#richtext.visibility += 1
 
@@ -34,7 +38,7 @@ func _on_lightswitch_pressed():
 		##manual resetting on lightswitch
 		#$Darkness.visible = true
 		##reset click count
-	$Darkness.visible = !$Darkness.visible
+	darkness.visible = !darkness.visible
 
 
 func _on_click_target_pressed():
@@ -42,32 +46,31 @@ func _on_click_target_pressed():
 	print("you clicked " + str(clicks) + " time/s")
 	
 	# NOTE: CLICK VALUE-BASED EVENT TEMPLATE
-	if clicks == 100:
-		print("you reached 100")
-		event_template(event1)
+	if Data.DIALOGS.keys().has(clicks):
+		dialog.activate_dialog.emit(clicks)
 
-
-func event_template(event1):
-	print("event 1 triggered")
-	#NOTE: PROXY PSEUDOCODE
-	#eggclickable = false
-	#textindex = 1
-	#textcontainer.visibility = true
-	#richtext.text = event1[textindex]
-	#if richtext.visibility_ratio == 1
-		#progress text on click
-	#if textindex > event1.size
-		#textcontainer.visibility = false
-	#eggclickable = true
-	
-	#TODO:
-	# MAKE TEMPLATE FOR TEXT SECTIONS
-	## NEEDS TO BE ABLE TO;
-	### DISPLAY TEXT FROM THE MATCHING ARRAY/DICTIONARY IN DATA SCRIPT
-	### DISPLAY AND ACT BASED ON 'YES/NO' CHOICE OPTIONS
-	#### ON A 'NO' THE GAME WILL END AND THE EGG WILL 'HATCH' ON THE DATE/TIME GIVEN IN DATA (TBD)
-	#### ON A 'YES' THE GAME'S END AND 'HATCH' DATE/TIME WILL EXTEND
-	### DISPLAY A NEW OBJECT IN THE INCUBATOR IF 'YES' IS CHOSEN
+# NOTE (Galesy): Not needed
+#func event_template(event1):
+	#print("event 1 triggered")
+	##NOTE: PROXY PSEUDOCODE
+	##eggclickable = false
+	##textindex = 1
+	##textcontainer.visibility = true
+	##richtext.text = event1[textindex]
+	##if richtext.visibility_ratio == 1
+		##progress text on click
+	##if textindex > event1.size
+		##textcontainer.visibility = false
+	##eggclickable = true
+	#
+	##TODO:
+	## MAKE TEMPLATE FOR TEXT SECTIONS
+	### NEEDS TO BE ABLE TO;
+	#### DISPLAY TEXT FROM THE MATCHING ARRAY/DICTIONARY IN DATA SCRIPT
+	#### DISPLAY AND ACT BASED ON 'YES/NO' CHOICE OPTIONS
+	##### ON A 'NO' THE GAME WILL END AND THE EGG WILL 'HATCH' ON THE DATE/TIME GIVEN IN DATA (TBD)
+	##### ON A 'YES' THE GAME'S END AND 'HATCH' DATE/TIME WILL EXTEND
+	#### DISPLAY A NEW OBJECT IN THE INCUBATOR IF 'YES' IS CHOSEN
 
 
 func _on_research_notes_pressed():

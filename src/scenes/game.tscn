@@ -138,6 +138,7 @@ grow_vertical = 0
 text = "lightswitch"
 
 [node name="Dialog" parent="." instance=ExtResource("4_lbhrr")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="ClickTarget" to="." method="_on_click_target_pressed"]
