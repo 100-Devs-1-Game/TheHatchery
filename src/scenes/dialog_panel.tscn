@@ -40,7 +40,6 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "This is text"
 horizontal_alignment = 1
 vertical_alignment = 1
 

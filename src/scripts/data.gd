@@ -16,7 +16,7 @@ var checkpoint3
 
 #NOTE: CURRENT VALUES ALIGN TO 1 HOUR PER CLICK (MAY BE REPLACED)
 enum TIMEVALUES {
-	test = 10**6,
+	test = 1,
 	due_2weeks = 336,
 	due_8weeks = 1344,
 	due_24weeks = 4032,
