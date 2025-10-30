@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nktkc3bvtxrg"
-path="res://.godot/imported/WIPhatcheryscene3d.png-4ff60a01e95e725d2dc2828b400a157a.ctex"
+path="res://.godot/imported/WIPhatcheryscene3d.png-808f513a51785c2474358cf92380b7bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/WIPhatcheryscene3d.png"
-dest_files=["res://.godot/imported/WIPhatcheryscene3d.png-4ff60a01e95e725d2dc2828b400a157a.ctex"]
+source_file="res://assets/PROXYimage/WIPhatcheryscene3d.png"
+dest_files=["res://.godot/imported/WIPhatcheryscene3d.png-808f513a51785c2474358cf92380b7bc.ctex"]
 
 [params]
 

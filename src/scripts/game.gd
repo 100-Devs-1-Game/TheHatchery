@@ -1,17 +1,19 @@
 extends Control
 
-@onready var clickvalue = Data.clickvalue
-
-@onready var eggclickable = Data.eggclickable
-@onready var clicks = Data.clicks
-@onready var tutorialview = Data.tutorialview
-
-@onready var event1 = Data.array_eventtemplatetext
+#NOTE (Galesy): This won't work. It fetches the value on ready and creates a copy, not a reference
+#@onready var clickvalue = Data.clickvalue
+#
+#@onready var eggclickable = Data.eggclickable
+#@onready var clicks = Data.clicks
+#@onready var tutorialview = Data.tutorialview
+#
+#@onready var event1 = Data.array_eventtemplatetext
 
 @onready var click_counter: Label = $ClickCounter
 @onready var darkness: ColorRect = $Darkness
 @onready var dialog: Control = $Dialog
 
+var clicks = 0
 
 func _ready():
 	$Darkness.visible = true
@@ -42,7 +44,9 @@ func _on_lightswitch_pressed():
 
 
 func _on_click_target_pressed():
-	clicks += clickvalue
+	Data.clicks += Data.clickvalue
+	clicks = Data.clicks
+	print(Data.clicks)
 	print("you clicked " + str(clicks) + " time/s")
 	
 	# NOTE: CLICK VALUE-BASED EVENT TEMPLATE
@@ -74,11 +78,11 @@ func _on_click_target_pressed():
 
 
 func _on_research_notes_pressed():
-	if tutorialview == false:
-		tutorialview = true
+	if Data.tutorialview == false:
+		Data.tutorialview = true
 		var tween = create_tween()
 		tween.tween_property($ResearchNotesProp, "position", Vector2 (527,40), 1).set_trans(Tween.TRANS_EXPO)
 	else:
-		tutorialview = false
+		Data.tutorialview = false
 		var tween = create_tween()
 		tween.tween_property($ResearchNotesProp, "position", Vector2 (527,1100), 1).set_trans(Tween.TRANS_EXPO)
