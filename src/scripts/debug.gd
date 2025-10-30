@@ -1,6 +1,6 @@
 extends Control
 
-@onready var clicks = D.clicks
+@onready var clicks = Data.clicks
 
 
 func _process(_delta):
