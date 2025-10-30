@@ -13,8 +13,8 @@ extends Control
 @onready var dialog: Control = $Dialog
 
 
-#func _ready():
-	#dark = true
+func _ready():
+	$Darkness.visible = true
 
 
 func _process(_delta):
