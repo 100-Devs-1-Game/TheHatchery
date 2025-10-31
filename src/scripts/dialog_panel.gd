@@ -21,11 +21,13 @@ func _ready() -> void:
 		yes_button.disabled = true
 		no_button.disabled = true
 		dialog_denied.emit()
+		Data.set_due_date()
 	)
 	yes_button.button_down.connect(func():
 		yes_button.disabled = true
 		no_button.disabled = true
 		dialog_accepted.emit()
+		Data.add_stimuli()
 	)
 
 
