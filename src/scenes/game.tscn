@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dijj7msso558g"]
+[gd_scene load_steps=7 format=3 uid="uid://dijj7msso558g"]
 
 [ext_resource type="Script" uid="uid://dljbefbqotbh5" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://nktkc3bvtxrg" path="res://assets/PROXYimage/WIPhatcheryscene3d.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dk03fxciwgwba" path="res://scenes/time_display.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://c6dcsrdm6gn1k" path="res://scenes/dialog_panel.tscn" id="4_lbhrr"]
 
 [sub_resource type="Gradient" id="Gradient_lnu2h"]
@@ -141,6 +142,9 @@ text = "lightswitch"
 [node name="Dialog" parent="." instance=ExtResource("4_lbhrr")]
 visible = false
 layout_mode = 1
+
+[node name="TimeDisplay" parent="." instance=ExtResource("4_iywne")]
+position = Vector2(1460, 54)
 
 [connection signal="pressed" from="ClickTarget" to="." method="_on_click_target_pressed"]
 [connection signal="pressed" from="ResearchNotesButton" to="." method="_on_research_notes_pressed"]

@@ -30,8 +30,7 @@ func _on_lightswitch_pressed():
 func _on_click_target_pressed():
 	Data.clicks += Data.clickvalue
 	clicks = Data.clicks
-	print(Data.clicks)
-	print("you clicked " + str(clicks) + " time/s")
+	#print("you clicked " + str(clicks) + " time/s")
 	
 	# NOTE: CLICK VALUE-BASED EVENT TEMPLATE
 	if Data.DIALOGS.keys().has(clicks):

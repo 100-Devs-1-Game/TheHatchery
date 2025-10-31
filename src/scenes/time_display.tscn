@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk03fxciwgwba"]
+
+[ext_resource type="Script" uid="uid://td3k83350vyi" path="res://scripts/time_display.gd" id="1_3uj10"]
+
+[node name="TimeDisplay" type="Node2D"]
+skew = 0.523599
+script = ExtResource("1_3uj10")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_bottom = 23.0
+grow_horizontal = 0

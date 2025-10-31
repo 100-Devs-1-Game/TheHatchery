@@ -1,4 +1,4 @@
-# Exported Game Builds
+﻿# Exported Game Builds
 builds/
 
 # Temp files
@@ -33,3 +33,4 @@ mono_crash.*.json
 # Rider specific ignores
 .idea/
 src/ptt.json
+.png.import

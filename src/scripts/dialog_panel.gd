@@ -8,6 +8,8 @@ signal dialog_denied
 @onready var no_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/NO
 @onready var text: RichTextLabel = $Panel/MarginContainer/VBoxContainer/RichTextLabel
 
+## TODO : Actually make the dialog buttons do stuff
+
 #Connects activate dialog (called only from outside) to display text
 #Connects buttons to respective dialog output signals (called only from inside) and disable buttons
 
