@@ -118,6 +118,20 @@ text = "this text does not work
 ROOT GAME VER."
 horizontal_alignment = 1
 
+[node name="Dialog" parent="." instance=ExtResource("4_lbhrr")]
+visible = false
+layout_mode = 1
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+
+[node name="TimeDisplay" parent="." instance=ExtResource("4_iywne")]
+position = Vector2(1561, 870)
+rotation = -0.49652
+scale = Vector2(1.79407, 1.79407)
+skew = -0.617847
+
 [node name="Darkness" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -138,13 +152,6 @@ offset_top = -156.0
 offset_right = 431.0
 grow_vertical = 0
 text = "lightswitch"
-
-[node name="Dialog" parent="." instance=ExtResource("4_lbhrr")]
-visible = false
-layout_mode = 1
-
-[node name="TimeDisplay" parent="." instance=ExtResource("4_iywne")]
-position = Vector2(1460, 54)
 
 [connection signal="pressed" from="ClickTarget" to="." method="_on_click_target_pressed"]
 [connection signal="pressed" from="ResearchNotesButton" to="." method="_on_research_notes_pressed"]
