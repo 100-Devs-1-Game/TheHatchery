@@ -5,6 +5,7 @@ extends Control
 @onready var click_counter: Label = $ClickCounter
 @onready var darkness: ColorRect = $Darkness
 @onready var dialog: Control = $Dialog
+@onready var eggname_panel: Panel = $Eggname
 
 var clicks = 0
 
@@ -25,6 +26,8 @@ func _process(_delta):
 
 func _on_lightswitch_pressed():
 	darkness.visible = !darkness.visible
+	if !darkness.visible and Data.EggName == "":
+		eggname_panel.show()
 
 
 func _on_click_target_pressed():
@@ -51,3 +54,8 @@ func _on_research_notes_pressed():
 		Data.tutorialview = false
 		var tween = create_tween()
 		tween.tween_property($ResearchNotesProp, "position", Vector2 (527,1100), 1).set_trans(Tween.TRANS_EXPO)
+
+
+func _on_egg_name_text_submitted(new_text: String) -> void:
+	Data.EggName = new_text
+	eggname_panel.hide()

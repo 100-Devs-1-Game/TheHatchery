@@ -16,6 +16,7 @@ var checkpoint3
 var due_date
 var set_ending
 
+var EggName = ""
 
 #NOTE: CURRENT VALUES ALIGN TO 1 HOUR PER CLICK (MAY BE REPLACED)
 enum TIMEVALUES {
