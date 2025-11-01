@@ -19,7 +19,7 @@ var set_ending
 
 #NOTE: CURRENT VALUES ALIGN TO 1 HOUR PER CLICK (MAY BE REPLACED)
 enum TIMEVALUES {
-	test = 100000,
+	#test = 10,
 	due_2weeks = 336,#336
 	due_8weeks = 1344,
 	due_24weeks = 4032,
@@ -65,7 +65,7 @@ func hatch():
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 var DIALOGS: Dictionary[int, String] = {
-	TIMEVALUES.test: "TEST DIALOGUE\n This is some text\n It'll be output on the dialog panel\n Might make automated tool to add these faster",
+	#TIMEVALUES.test: "TEST DIALOGUE\n This is some text\n It'll be output on the dialog panel\n Might make automated tool to add these faster",
 	TIMEVALUES.due_2weeks: "TEST: Stage 1 hatch day",
 	TIMEVALUES.due_8weeks: "TEST: Stage 2 hatch day",
 	TIMEVALUES.due_24weeks: "TEST: Stage 3 hatch day",

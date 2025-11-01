@@ -13,7 +13,7 @@ signal dialog_denied
 #Connects activate dialog (called only from outside) to display text
 #Connects buttons to respective dialog output signals (called only from inside) and disable buttons
 
-const LETTER_DELAY = 0.05
+const LETTER_DELAY = 0.025
 var line_complete: bool = false
 var target_text: PackedStringArray
 
@@ -23,12 +23,14 @@ func _ready() -> void:
 		yes_button.disabled = true
 		no_button.disabled = true
 		dialog_denied.emit()
+		reset()
 		Data.set_due_date()
 	)
 	yes_button.button_down.connect(func():
 		yes_button.disabled = true
 		no_button.disabled = true
 		dialog_accepted.emit()
+		reset()
 		Data.add_stimuli()
 	)
 
@@ -42,6 +44,7 @@ func display_text(index: int):
 
 var letter_delta: float = 0.0
 var str_index: int = 0
+
 func _process(delta: float) -> void:
 	if target_text.is_empty():
 		if text.text: text.text = ""
@@ -54,9 +57,19 @@ func _process(delta: float) -> void:
 		letter_delta = 0.0
 	
 	elif line_complete:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if target_text.size() == 1:
+			yes_button.show()
+			no_button.show()
+		elif Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			text.text = ""
 			target_text.remove_at(0)
 			line_complete = false
 			str_index = 0
 			letter_delta = 0
+		
+
+func reset():
+	yes_button.hide()
+	no_button.hide()
+	hide()
+	target_text.clear()
