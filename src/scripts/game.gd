@@ -25,12 +25,16 @@ func _process(_delta):
 
 
 func _on_lightswitch_pressed():
+	$LightSwitch.play()
+	
 	darkness.visible = !darkness.visible
 	if !darkness.visible and Data.EggName == "":
 		eggname_panel.show()
 
 
 func _on_click_target_pressed():
+	$EggTap.play()
+	
 	Data.clicks += Data.clickvalue
 	clicks = Data.clicks
 	#print("you clicked " + str(clicks) + " time/s")
@@ -46,6 +50,8 @@ func _on_click_target_pressed():
 
 
 func _on_research_notes_pressed():
+	$PaperSwish.play()
+	
 	if Data.tutorialview == false:
 		Data.tutorialview = true
 		var tween = create_tween()
