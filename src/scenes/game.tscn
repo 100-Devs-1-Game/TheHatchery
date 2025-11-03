@@ -1,15 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dijj7msso558g"]
+[gd_scene load_steps=6 format=3 uid="uid://dijj7msso558g"]
 
 [ext_resource type="Script" uid="uid://dljbefbqotbh5" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://nktkc3bvtxrg" path="res://assets/PROXYimage/WIPhatcheryscene3d.png" id="2_lnu2h"]
+[ext_resource type="Theme" uid="uid://bwdo4ds8v7xpp" path="res://hatchery.tres" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dk03fxciwgwba" path="res://scenes/time_display.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://c6dcsrdm6gn1k" path="res://scenes/dialog_panel.tscn" id="4_lbhrr"]
-
-[sub_resource type="Gradient" id="Gradient_lnu2h"]
-colors = PackedColorArray(0, 0, 0, 0.196078, 0, 0, 0, 0.196078)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lbhrr"]
-gradient = SubResource("Gradient_lnu2h")
 
 [node name="GAME" type="Control"]
 layout_mode = 3
@@ -49,16 +44,16 @@ offset_right = 178.0
 offset_bottom = 287.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = SubResource("GradientTexture2D_lbhrr")
+focus_mode = 0
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ResearchNotesProp" type="ColorRect" parent="."]
 layout_mode = 2
 anchor_left = 0.274479
-anchor_top = 0.037963
+anchor_top = 0.062963
 anchor_right = 0.725521
-anchor_bottom = 0.952778
+anchor_bottom = 0.927778
 offset_left = 0.000305176
 offset_top = 1059.0
 offset_right = 0.000366211
@@ -72,23 +67,30 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 34.0
-offset_top = 42.0
-offset_right = -34.0
-offset_bottom = -42.0
+offset_top = 83.0
+offset_right = -34.0007
+offset_bottom = -83.0002
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 22
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec justo odio, lobortis sed convallis vel, pellentesque fringilla diam. Nam consectetur vestibulum ultricies. Curabitur aliquet, lectus ut dictum vehicula, dolor diam ultrices mi, eget mattis tortor sem lobortis neque. Maecenas suscipit dapibus massa sed porttitor. Sed pulvinar libero ut volutpat euismod. Vivamus iaculis leo quis leo laoreet, vitae lacinia erat dictum. Pellentesque eget pretium justo. Fusce vitae neque augue.
+theme = ExtResource("3_iywne")
+bbcode_enabled = true
+text = "[u]Hatching a baby 101[/u]
 
-Sed quis arcu quam. Etiam faucibus ligula sit amet dolor facilisis tristique eget in orci. Morbi elementum nunc sit amet lorem dapibus, nec faucibus metus scelerisque. Nullam molestie lacus est, a pulvinar augue luctus gravida. Fusce sollicitudin, tortor eu ultrices mattis, libero ligula lacinia urna, non dignissim elit leo in lacus. Curabitur sollicitudin tincidunt risus sit amet imperdiet. Integer vel turpis eget est congue fermentum efficitur in ex. Curabitur vel nulla sodales, malesuada justo a, porttitor leo.
+After prepping the egg, it must be stimulated by tapping or poking, to simulate the function of a heartbeat it hasn’t yet developed. Fortunately, if following the preparation instructions given by user P4R4C3LSUS, the egg must only be stimulated once every hour, instead of every few seconds like a fully developed animal.
 
-Maecenas eu sem posuere, placerat est sed, feugiat nulla. Curabitur scelerisque pellentesque velit, varius hendrerit enim iaculis ac. Suspendisse ultricies vehicula nunc, sit amet tristique augue viverra eu. Morbi non eleifend erat, vel fringilla arcu. Phasellus at quam ut turpis molestie ultrices. Aliquam nunc felis, laoreet sed erat in, dignissim commodo tellus. In dapibus justo eu urna lacinia, placerat sodales libero porttitor. Etiam vitae feugiat lacus. Nunc posuere auctor ullamcorper. Curabitur faucibus aliquet lorem, a lobortis justo dictum eget. Nullam tempus velit in nulla aliquam elementum. Morbi imperdiet justo lorem, et porta sapien pellentesque at. Donec facilisis, ligula quis congue cursus, erat mauris cursus ipsum, a ornare nunc eros vel nibh.
+At the turning points of different developmental stages, consider adding new points of stimulus (sound, sensation, social fundamentals, and other points of developmental interest) to help the embryo develop better while still inside the egg.
 
-Aliquam diam ante, facilisis vitae maximus at, vestibulum quis diam. Donec id interdum magna, at rhoncus risus. Nam vitae quam tincidunt, interdum metus a, laoreet lorem. Aliquam erat volutpat. Nam bibendum blandit sapien ac eleifend. Cras commodo nibh eu leo interdum, tempor dignissim enim malesuada. Nam egestas ante et ante placerat, nec elementum justo malesuada. Phasellus turpis diam, dictum at turpis vehicula, placerat mollis sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In fermentum rhoncus mattis. Donec sed orci in leo venenatis varius efficitur nec sapien. Fusce elit nunc, vulputate id quam quis, sagittis hendrerit neque. Praesent faucibus nisi diam, non tempus tortor tempor et. Pellentesque nec posuere ipsum. Fusce id eros sed mi posuere laoreet consectetur id purus.
+If I refrain from using additional equipment on the suggested dates, the egg should hatch approximately 48 hours after the matching date. 
 
-Vestibulum turpis velit, facilisis non quam a, porta laoreet arcu. Integer vitae diam enim. Vestibulum tincidunt nisi nisl, eu pharetra nibh egestas vitae. Proin euismod auctor arcu, sit amet tempor neque euismod nec. Vivamus rutrum dui nunc, sit amet viverra ex pretium et. Cras vitae est non nibh interdum finibus ac quis eros. Phasellus blandit malesuada justo quis vehicula. Nulla pellentesque tellus eros, quis luctus neque gravida nec. In aliquet orci at magna posuere finibus. Nullam laoreet libero id venenatis convallis. Quisque tincidunt, quam et porta ornare, mauris ligula aliquam urna, vitae vehicula risus lectus at turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;"
+On hatching, the resulting offspring should be monitored carefully to prevent easily preventable issues, and to record any developmental delays or quirks that may be present depending on the stimuli used during gestation.
+
+DON’T FORGET TO CHECK THE EGG AT 2 WEEKS, 8 WEEKS AND 24 WEEKS
+
+LAST POSSIBLE HATCH DAY = 40 WEEKS PLUS 2 DAYS"
+scroll_active = false
 tab_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ResearchNotesButton" type="Button" parent="."]
 layout_mode = 1
@@ -102,7 +104,8 @@ offset_top = -79.0
 offset_right = 433.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "research notes"
+focus_mode = 0
+theme = ExtResource("3_iywne")
 
 [node name="ClickCounter" type="Label" parent="."]
 layout_mode = 1
@@ -151,7 +154,8 @@ offset_left = 141.0
 offset_top = -156.0
 offset_right = 431.0
 grow_vertical = 0
-text = "lightswitch"
+focus_mode = 0
+theme = ExtResource("3_iywne")
 
 [node name="Eggname" type="Panel" parent="."]
 visible = false

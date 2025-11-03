@@ -14,4 +14,4 @@ func _input(event: InputEvent) -> void:
 	var stringed_months = "0" + str(months) if months < 10 else str(months)
 	var stringed_years = "0" + str(years) if years < 10 else str(years)
 	timedisplay.text = stringed_hours + ":00"
-	datedisplay.text = stringed_days + " / " + stringed_months + " / " + stringed_years
+	datedisplay.text = stringed_days + " / " + stringed_months #+ " / " + stringed_years

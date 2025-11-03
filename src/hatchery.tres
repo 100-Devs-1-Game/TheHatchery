@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bwdo4ds8v7xpp"]
+
+[ext_resource type="FontFile" uid="uid://dr1xejdikxa7f" path="res://external assets/fonts/alarm clock.ttf" id="1_1n4tr"]
+[ext_resource type="FontFile" uid="uid://bi67y1kr27ucb" path="res://external assets/fonts/Chalkboard-Regular.ttf" id="2_1rnrr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n4tr"]
+bg_color = Color(1, 1, 1, 0.117647)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcawf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_1n4tr")
+Button/styles/normal = SubResource("StyleBoxFlat_wcawf")
+Button/styles/pressed = SubResource("StyleBoxFlat_wcawf")
+Label/fonts/font = ExtResource("1_1n4tr")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/normal_font_size = 30
+RichTextLabel/fonts/normal_font = ExtResource("2_1rnrr")
