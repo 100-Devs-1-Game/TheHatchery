@@ -14,7 +14,7 @@ var checkpoint2
 var checkpoint3
 
 var due_date
-var set_ending
+var set_ending = "STAGE 2"
 
 var EggName = ""
 

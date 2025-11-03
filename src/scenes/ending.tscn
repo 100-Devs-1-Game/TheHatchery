@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwyy3ic54ji4s"]
+[gd_scene load_steps=7 format=3 uid="uid://cwyy3ic54ji4s"]
 
 [ext_resource type="Script" uid="uid://cucqly62gdssy" path="res://scripts/ending.gd" id="1_mqjok"]
+[ext_resource type="Theme" uid="uid://bwdo4ds8v7xpp" path="res://hatchery.tres" id="2_fyrdv"]
+[ext_resource type="FontFile" uid="uid://bi67y1kr27ucb" path="res://external assets/fonts/Chalkboard-Regular.ttf" id="3_2x1jc"]
+[ext_resource type="AudioStream" uid="uid://c7d8qab5ni5yv" path="res://assets/SFX/Death_1.ogg" id="4_5amew"]
+[ext_resource type="AudioStream" uid="uid://1s0vlsngwynv" path="res://assets/SFX/Death_2.ogg" id="5_t1k4y"]
+[ext_resource type="AudioStream" uid="uid://b1aicfa32wx2p" path="res://assets/SFX/Death_3.ogg" id="6_3v48n"]
 
-[node name="Control" type="Control"]
+[node name="Ending" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,55 +16,77 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mqjok")
 
-[node name="Dialog" type="Control" parent="."]
-custom_minimum_size = Vector2(1000, 600)
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Welcome" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
+offset_left = -556.0
+offset_top = 107.0
+offset_right = 556.0
+offset_bottom = 242.0
 grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="Dialog"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Dialog/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Dialog/Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Dialog/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_fyrdv")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 70
+text = "Welcome to the world, baby Francis..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Dialog/Panel/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
+offset_left = 222.0
+offset_top = 182.0
+offset_right = 1698.0
+offset_bottom = 898.0
+size_flags_vertical = 3
+theme = ExtResource("2_fyrdv")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Mountains virtues sea strong ideal war holiest free faith philosophy right disgust justice oneself. Passion aversion joy right marvelous sexuality inexpedient derive god philosophy endless derive. Victorious dead convictions inexpedient will aversion war ascetic evil hatred noble decieve. War joy horror philosophy love. Morality abstract society gains snare philosophy derive insofar insofar evil sea sexuality morality victorious. Merciful play moral ultimate superiority. Grandeur hatred endless faith convictions grandeur inexpedient ubermensch.
 
-[node name="YES" type="Button" parent="Dialog/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "YES"
+Spirit justice chaos hope joy derive battle abstract. Sea pinnacle strong endless endless reason moral value depths. Strong prejudice intentions morality value derive hatred spirit oneself pious marvelous god dead derive.
 
-[node name="NO" type="Button" parent="Dialog/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "NO"
+Snare endless holiest free holiest ocean mountains reason against marvelous. Contradict derive inexpedient ultimate free disgust burying inexpedient snare faithful truth.
+
+Convictions free burying strong decieve horror burying gains faithful of horror. Noble god contradict gains passion decrepit right hatred ideal will snare insofar. Value right virtues sea enlightenment.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 884.0
+offset_top = 873.0
+offset_right = -883.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_2x1jc")
+theme_override_font_sizes/font_size = 65
+text = "FIN."
+
+[node name="Death_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5amew")
+
+[node name="Death_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t1k4y")
+
+[node name="Death_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3v48n")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
