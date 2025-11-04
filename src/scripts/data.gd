@@ -24,14 +24,15 @@ var black
 var animplayer
 var rustling
 var environment
+var lightswitch
 
 #NOTE: CURRENT VALUES ALIGN TO 1 HOUR PER CLICK (MAY BE REPLACED)
 enum TIMEVALUES {
-	#test = 10,
-	due_2weeks = 3,#336
-	due_8weeks = 1344,
-	due_24weeks = 4032,
-	due_40weeks = 6720,
+	#test = 1,
+	due_2weeks = 336,#336
+	due_8weeks = 1344,#1344
+	due_24weeks = 4032,#4032
+	due_40weeks = 6720,#6720
 }
 
 func set_due_date():
@@ -47,15 +48,16 @@ func set_due_date():
 
 
 func darkness_transition_pt1():
-	black.modulate = Color(0, 0, 100, 0)
+	lightswitch.play()
 	black.visible = true
-	animplayer.play("fade_to_black")
 	rustling.play()
-	await get_tree().create_timer(3).timeout
+	
 
-func darkness_transition_pt2():
-	animplayer.play("fade_from_black")
-	await get_tree().create_timer(3).timeout
+func darkness_transition_pt2(STAGENAME):
+	await get_tree().create_timer(1.5).timeout
+	current_stage = STAGENAME
+	await get_tree().create_timer(1.5).timeout
+	lightswitch.play()
 	black.visible = false
 
 
@@ -63,20 +65,17 @@ func add_stimuli():
 	if clicks == TIMEVALUES.due_2weeks:
 		print("added a blanket to the hatchery")
 		darkness_transition_pt1()
-		environment.texture = load("res://assets/PROXYimage/WIP1blanket.png") #to replace
-		darkness_transition_pt2()
+		darkness_transition_pt2("STAGE 1")
 	if clicks == TIMEVALUES.due_8weeks:
 		print("added an mp3 player to the hatchery")
 		darkness_transition_pt1()
-		environment.texture = load("res://assets/PROXYimage/WIP2MPplayer.png") #to replace
 		#mp3playerbutton.disabled = false
-		darkness_transition_pt2()
+		darkness_transition_pt2("STAGE 2")
 	if clicks == TIMEVALUES.due_24weeks:
 		print("added some plushies to the hatchery")
 		darkness_transition_pt1()
-		environment.texture = load("res://assets/PROXYimage/WIP3plushies.png") #to replace
 		#boopbutton.disabled = false
-		darkness_transition_pt2()
+		darkness_transition_pt2("STAGE 3")
 
 
 #func hatch():
@@ -93,8 +92,8 @@ func add_stimuli():
 
 var DIALOGS: Dictionary[int, String] = {
 	#TIMEVALUES.test: "TEST DIALOGUE\n This is some text\n It'll be output on the dialog panel\n Might make automated tool to add these faster",
-	TIMEVALUES.due_2weeks: "TEST: Stage 0 hatch day",
-	TIMEVALUES.due_8weeks: "TEST: Stage 1 hatch day",
-	TIMEVALUES.due_24weeks: "TEST: Stage 2 hatch day",
-	TIMEVALUES.due_40weeks: "TEST: Stage 3 hatch day"
+	TIMEVALUES.due_2weeks: "It's been a couple of weeks now. You’ve been stimulating the egg consistently, and now you need to make a decision.\n At this point in development, your baby could benefit from an extra source of heat to make sure they’re properly insulated.\n It would increase the chances of successfully hatching the egg, but the time it would take to set it up would mean it needs more time until it's ready.\n Do you want to insulate the environment by adding a blanket to the hatchery?",
+	TIMEVALUES.due_8weeks: "It's been a few of weeks now. You’re still at it, stimulating the egg all day and all night. You need to make another decision.\n Right now, your baby’s growing their ears, isn’t that exciting? It’d be really nice if they had something to listen to while they’re in there. Apparently, babies who listen to classical music come out way smarter, isn’t that interesting?\n It would increase the chances of successfully hatching the egg, but the time it would take to set it up would mean it needs more time until it's ready.\n Do you want to add an MP3 player to the hatchery?",
+	TIMEVALUES.due_24weeks: "It's the final check-up day. You’re nearly there, just keep tapping a little while longer and baby " + EggName + " will be here soon. But for now, it’s time for the last decision.\n Your baby’s in the final sprint now, they’ve got everything they need, everything they need to succeed, all they need now is time. And love. Maybe they would enjoy some company?\n It would increase the chances of successfully hatching the egg, but the time it would take to set it up would mean it needs more time until it's ready.\n Do you want to add some friends to the hatchery?",
+	#TIMEVALUES.due_40weeks: "TEST: Stage 3 hatch day"
 }

@@ -13,22 +13,22 @@ signal dialog_denied
 #Connects activate dialog (called only from outside) to display text
 #Connects buttons to respective dialog output signals (called only from inside) and disable buttons
 
-const LETTER_DELAY = 0.025
+const LETTER_DELAY = 0#.025
 var line_complete: bool = false
 var target_text: PackedStringArray
 
 func _ready() -> void:
 	activate_dialog.connect(display_text)
 	no_button.button_down.connect(func():
-		yes_button.disabled = true
-		no_button.disabled = true
+		yes_button.disabled = false
+		no_button.disabled = false
 		dialog_denied.emit()
 		reset()
 		Data.set_due_date()
 	)
 	yes_button.button_down.connect(func():
-		yes_button.disabled = true
-		no_button.disabled = true
+		yes_button.disabled = false
+		no_button.disabled = false
 		dialog_accepted.emit()
 		reset()
 		Data.add_stimuli()

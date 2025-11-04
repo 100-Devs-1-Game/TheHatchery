@@ -81,35 +81,67 @@ vertical_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
-offset_left = 222.0
-offset_top = 182.0
-offset_right = 1698.0
-offset_bottom = 898.0
+offset_left = 185.0
+offset_top = 209.0
+offset_right = 1735.0
+offset_bottom = 906.0
 size_flags_vertical = 3
 theme = ExtResource("2_fyrdv")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 40
-text = "Mountains virtues sea strong ideal war holiest free faith philosophy right disgust justice oneself. Passion aversion joy right marvelous sexuality inexpedient derive god philosophy endless derive. Victorious dead convictions inexpedient will aversion war ascetic evil hatred noble decieve. War joy horror philosophy love. Morality abstract society gains snare philosophy derive insofar insofar evil sea sexuality morality victorious. Merciful play moral ultimate superiority. Grandeur hatred endless faith convictions grandeur inexpedient ubermensch.
+theme_override_font_sizes/normal_font_size = 35
+text = "You watch, amazed, as baby [name] makes their way out. They crawl out with tiny fists and must decide that that alone is enough, because they lie down right there, barely an inch out of the shell.
 
-Spirit justice chaos hope joy derive battle abstract. Sea pinnacle strong endless endless reason moral value depths. Strong prejudice intentions morality value derive hatred spirit oneself pious marvelous god dead derive.
+You admire them, the beautiful, yet surprisingly small babe, as they slumber; until you hear a noise. 
+They’re choking on air, no, not taking in air at all. Listen to that wheezing.
 
-Snare endless holiest free holiest ocean mountains reason against marvelous. Contradict derive inexpedient ultimate free disgust burying inexpedient snare faithful truth.
+Your baby is choking on nothing, struggling to breathe, because you didn’t give them long enough.
 
-Convictions free burying strong decieve horror burying gains faithful of horror. Noble god contradict gains passion decrepit right hatred ideal will snare insofar. Value right virtues sea enlightenment.
+Baby [name], your baby, can’t breathe. Baby [name] is dying because of you, and you’re just sitting there.
+
+You have to do something.
+
+And you do. You rush into action, grabbing anything and everything that could help while they lie there and suffer. You craft together a rudimentary ventilation crate out of old siphoning tubes, a bike pump and plastic tupperware, placing baby [name] inside and watching them carefully.
+
+You don’t think they’ll last long, you half expect them to sputter out within the hour, but half a day later, they’re breathing; small, little hiccup breaths, but breaths nevertheless.
+
+After an agonising 24 hours of manually pumping air into the ventilator, you risk taking out [name] for just a few moments, but they start wheezing again in seconds.
+
+They improve on day 2, able to lie in your cupped hands for a full minute before they become restless.
+
+[Name] finally starts to accept the powdered milk you’ve been trying to feed them on day 3. They eat like a starved beast, and gulp down a whole bottle even though they’re still only as big as your fist.
+
+Baby [name] grabs your thumb in both of their tiny hands when you attempt to put them back into the ventilator after an hour’s worth of cuddling on the fourth day.
+
+You start to think that, despite your failures to let them grow just a little longer, with just a little more love, could be a good parent to baby [name]. 
+
+But then…
+
+…
+
+Baby [name] lives for 5 days before they pass in your arms.
+It’s just 5 days, a mere 120 hours, but…
+
+Those 5 days meant everything.
+
+…
+
+You did the impossible; you succeeded. But at what cost?
+
+Maybe it’s not worth trying again.
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters_behavior = 1
 
 [node name="Button" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 884.0
-offset_top = 873.0
+offset_top = 921.0
 offset_right = -883.0
-offset_bottom = -113.0
+offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_2x1jc")

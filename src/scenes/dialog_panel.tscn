@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6dcsrdm6gn1k"]
+[gd_scene load_steps=4 format=3 uid="uid://c6dcsrdm6gn1k"]
 
 [ext_resource type="Script" uid="uid://wvatrkliia3w" path="res://scripts/dialog_panel.gd" id="1_ainys"]
+[ext_resource type="Theme" uid="uid://bwdo4ds8v7xpp" path="res://hatchery.tres" id="2_rbol1"]
+[ext_resource type="FontFile" uid="uid://bi67y1kr27ucb" path="res://external assets/fonts/Chalkboard-Regular.ttf" id="3_u10g5"]
 
 [node name="Dialog" type="Control"]
 custom_minimum_size = Vector2(1000, 600)
@@ -21,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_rbol1")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -40,6 +43,8 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_rbol1")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -48,12 +53,20 @@ layout_mode = 2
 
 [node name="YES" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u10g5")
+theme_override_font_sizes/font_size = 35
 text = "YES"
 
 [node name="NO" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u10g5")
+theme_override_font_sizes/font_size = 35
 text = "NO"

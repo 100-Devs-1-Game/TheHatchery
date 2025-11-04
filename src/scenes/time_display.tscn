@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dk03fxciwgwba"]
 
 [ext_resource type="Script" uid="uid://td3k83350vyi" path="res://scripts/time_display.gd" id="1_3uj10"]
-[ext_resource type="Theme" uid="uid://bwdo4ds8v7xpp" path="res://hatchery.tres" id="2_qjjb1"]
+[ext_resource type="Theme" uid="uid://ptfdfs3wnqv" path="res://digitalclock.tres" id="2_qjjb1"]
 
 [node name="TimeDisplay" type="Node2D"]
 script = ExtResource("1_3uj10")

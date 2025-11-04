@@ -12,6 +12,8 @@ extends Control
 
 var clicks = 0
 
+var hatchSFX
+
 func _ready():
 	darkness.visible = true
 	$Black.visible = false
@@ -19,6 +21,8 @@ func _ready():
 	Data.rustling = $Rustling
 	Data.environment = $Environment
 	Data.black = $Black
+	Data.lightswitch = $LightSwitch
+	$MP3Button.disabled = true
 
 
 func _process(_delta):
@@ -31,21 +35,45 @@ func _process(_delta):
 	
 	if Data.current_stage == "STAGE 0":
 		$Environment.play("STAGE0")
-		$Egg.play("still0")
+		if $ClickTarget.button_pressed == true:
+			$Egg.play("wiggle0")
+			await get_tree().create_timer(1).timeout
+		else:
+			$Egg.play("still0")
 		$Darkness.texture = load("res://assets/images/STAGE01dark.png")
+	
 	if Data.current_stage == "STAGE 1":
 		$Environment.play("STAGE1")
-		$Egg.play("still1")
+		if $ClickTarget.button_pressed == true:
+			$Egg.play("wiggle1")
+			await get_tree().create_timer(1).timeout
+		else:
+			$Egg.play("still1")
 		$Darkness.texture = load("res://assets/images/STAGE01dark.png")
+	
 	if Data.current_stage == "STAGE 2":
 		$Environment.play("STAGE2")
-		$Egg.play("still1")
+		if $ClickTarget.button_pressed == true:
+			$Egg.play("wiggle1")
+			await get_tree().create_timer(1).timeout
+		else:
+			$Egg.play("still1")
 		$Darkness.texture = load("res://assets/images/STAGE2dark.png")
+		$MP3Button.disabled = false
+	
 	if Data.current_stage == "STAGE 3":
 		$Environment.play("STAGE3")
-		$Egg.play("still1")
+		if $ClickTarget.button_pressed == true:
+			$Egg.play("wiggle1")
+			await get_tree().create_timer(1).timeout
+		else:
+			$Egg.play("still1")
 		$Darkness.texture = load("res://assets/images/STAGE3dark.png")
-
+	
+	if $"C&C".playing == true:
+		$Node2D.visible = true
+	else:
+		$Node2D.visible = false
 
 func _on_lightswitch_pressed():
 	$LightSwitch.play()
@@ -53,6 +81,8 @@ func _on_lightswitch_pressed():
 	darkness.visible = !darkness.visible
 	if !darkness.visible and Data.EggName == "":
 		eggname_panel.show()
+	
+
 
 
 func _on_click_target_pressed():
@@ -68,8 +98,14 @@ func _on_click_target_pressed():
 	
 	if Data.clicks == Data.due_date:
 		hatch()
-
-
+	
+	if Data.current_stage == "STAGE 0":
+		$Egg.play("wiggle0")
+	else:
+		$Egg.play("wiggle1")
+	
+		if clicks == Data.TIMEVALUES.due_40weeks + 48:
+				hatch()
 
 
 func _on_research_notes_pressed():
@@ -93,45 +129,38 @@ func _on_egg_name_text_submitted(new_text: String) -> void:
 
 
 
-func darkness_transition_pt1():
-	$Darkness.modulate = Color(0, 0, 100, 0)
-	$Darkness.visible = true
-	$AnimationPlayer.play("fade_to_dark")
-	$Rustling.play()
+#func darkness_transition_pt1():
+	#$Darkness.modulate = Color(0, 0, 100, 0)
+	#$Darkness.visible = true
+	#$AnimationPlayer.play("fade_to_dark")
+	#$Rustling.play()
+#
+#func darkness_transition_pt2():
+	#await get_tree().create_timer(3).timeout
+	#$AnimationPlayer.play("fade_from_dark")
 
-func darkness_transition_pt2():
-	await get_tree().create_timer(3).timeout
-	$AnimationPlayer.play("fade_from_dark")
 
-
-#func add_stimuli():
-	#if clicks == Data.TIMEVALUES.due_2weeks:
-		#print("added a blanket to the hatchery")
-		#darkness_transition_pt1()
-		#$Darkness.texture = ("res://assets/PROXYimage/WIPhatcheryscene3d.png")
-		#darkness_transition_pt2()
-	#if clicks == Data.TIMEVALUES.due_8weeks:
-		#print("added an mp3 player to the hatchery")
-		#darkness_transition_pt1()
-		#$Darkness.texture = ("res://assets/PROXYimage/WIPhatcheryscene3d.png")
-		##mp3playerbutton.disabled = false
-		#darkness_transition_pt2()
-	#if clicks == Data.TIMEVALUES.due_24weeks:
-		#print("added some plushies to the hatchery")
-		#darkness_transition_pt1()
-		#$Darkness.texture = ("res://assets/PROXYimage/WIPhatcheryscene3d.png")
-		##boopbutton.disabled = false
-		#darkness_transition_pt2()
 
 
 func hatch():
 	if clicks == Data.TIMEVALUES.due_2weeks + 48:
 		Data.set_ending = "STAGE 0"
-	if clicks == Data.TIMEVALUES.due_2weeks + 48:
+		hatchSFX = $ExternalCrack
+	if clicks == Data.TIMEVALUES.due_8weeks + 48:
 		Data.set_ending = "STAGE 1"
-	if clicks == Data.TIMEVALUES.due_2weeks + 48:
+		hatchSFX = $ExternalCrack
+	if clicks == Data.TIMEVALUES.due_24weeks + 48:
 		Data.set_ending = "STAGE 2"
-	if clicks == Data.TIMEVALUES.due_2weeks + 48:
+		hatchSFX = $InternalCrack
+	if clicks == Data.TIMEVALUES.due_40weeks + 48:
 		Data.set_ending = "STAGE 3"
+		hatchSFX = $InternalCrack
+	$Black.visible = true
 	$AnimationPlayer.play("fade_to_black")
+	hatchSFX.play()
+	await get_tree().create_timer(6).timeout
 	get_tree().change_scene_to_file("res://scenes/ending.tscn")
+
+
+func _on_mp_3_button_pressed():
+	$"C&C".playing = !$"C&C".playing

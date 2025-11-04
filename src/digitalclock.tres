@@ -3,4 +3,5 @@
 [ext_resource type="FontFile" uid="uid://dr1xejdikxa7f" path="res://external assets/fonts/alarm clock.ttf" id="1_h2jc5"]
 
 [resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
 Label/fonts/font = ExtResource("1_h2jc5")

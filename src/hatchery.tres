@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bwdo4ds8v7xpp"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bwdo4ds8v7xpp"]
 
-[ext_resource type="FontFile" uid="uid://dr1xejdikxa7f" path="res://external assets/fonts/alarm clock.ttf" id="1_1n4tr"]
 [ext_resource type="FontFile" uid="uid://bi67y1kr27ucb" path="res://external assets/fonts/Chalkboard-Regular.ttf" id="2_1rnrr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ms8od"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n4tr"]
 bg_color = Color(1, 1, 1, 0.117647)
@@ -9,13 +11,21 @@ bg_color = Color(1, 1, 1, 0.117647)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcawf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rnrr"]
+bg_color = Color(0.79, 0.765642, 0.4977, 0.737255)
+
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_ms8od")
 Button/styles/hover = SubResource("StyleBoxFlat_1n4tr")
 Button/styles/normal = SubResource("StyleBoxFlat_wcawf")
 Button/styles/pressed = SubResource("StyleBoxFlat_wcawf")
-Label/colors/font_color = Color(0, 0, 0, 1)
-Label/fonts/font = ExtResource("1_1n4tr")
-RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/font_sizes/normal_font_size = 30
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("2_1rnrr")
+LineEdit/font_sizes/font_size = 40
+LineEdit/fonts/font = ExtResource("2_1rnrr")
+Panel/styles/panel = SubResource("StyleBoxFlat_1rnrr")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 40
 RichTextLabel/fonts/normal_font = ExtResource("2_1rnrr")
