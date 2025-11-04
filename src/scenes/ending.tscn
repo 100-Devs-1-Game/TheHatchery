@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwyy3ic54ji4s"]
+[gd_scene load_steps=10 format=3 uid="uid://cwyy3ic54ji4s"]
 
 [ext_resource type="Script" uid="uid://cucqly62gdssy" path="res://scripts/ending.gd" id="1_mqjok"]
 [ext_resource type="Theme" uid="uid://bwdo4ds8v7xpp" path="res://hatchery.tres" id="2_fyrdv"]
@@ -6,6 +6,42 @@
 [ext_resource type="AudioStream" uid="uid://c7d8qab5ni5yv" path="res://assets/SFX/Death_1.ogg" id="4_5amew"]
 [ext_resource type="AudioStream" uid="uid://1s0vlsngwynv" path="res://assets/SFX/Death_2.ogg" id="5_t1k4y"]
 [ext_resource type="AudioStream" uid="uid://b1aicfa32wx2p" path="res://assets/SFX/Death_3.ogg" id="6_3v48n"]
+
+[sub_resource type="Animation" id="Animation_5amew"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t1k4y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3v48n"]
+_data = {
+&"RESET": SubResource("Animation_t1k4y"),
+&"fade_to_black": SubResource("Animation_5amew")
+}
 
 [node name="Ending" type="Control"]
 layout_mode = 3
@@ -16,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mqjok")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,5 +124,20 @@ stream = ExtResource("5_t1k4y")
 
 [node name="Death_3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3v48n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3v48n")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

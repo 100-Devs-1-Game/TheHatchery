@@ -1,6 +1,9 @@
 extends Control
 
-var deathSFX
+var deathSFX : AudioStreamPlayer
+
+var textstart1 = false
+var textstart2 = false
 
 func _ready():
 	print(Data.set_ending)
@@ -10,51 +13,42 @@ func _ready():
 	if Data.set_ending == "STAGE 0":
 		$RichTextLabel.text = STAGE0dialogue
 		deathSFX = $Death_1
+		#$Death_1.play()
 	if Data.set_ending == "STAGE 1":
 		$RichTextLabel.text = STAGE1dialogue
 		deathSFX = $Death_2
+		#$Death_2.play()
 	if Data.set_ending == "STAGE 2":
 		$RichTextLabel.text = STAGE2dialogue
 		deathSFX = $Death_3
+		#$Death_3.play()
 	if Data.set_ending == "STAGE 3":
 		$RichTextLabel.text = STAGE3dialogue
-	deathSFX.play()
+	$Death_1.play()
+	#deathSFX.play()
+	await get_tree().create_timer(0.5).timeout
+	textstart1 = true
+	await get_tree().create_timer(3).timeout
+	textstart2 = true
 
 
 func _process(delta):
-	await get_tree().create_timer(0.5).timeout
-	$Welcome.visible_characters += 1
-	await get_tree().create_timer(3).timeout
-	#deathSFX.play()
-	#await get_tree().create_timer(5).timeout
-	$RichTextLabel.visible_characters += 1
+	if textstart1 == true:
+		$Welcome.visible_characters += 1
+	if textstart2 == true:
+		$RichTextLabel.visible_characters += 1
 	if $RichTextLabel.visible_ratio == 1:
 		await get_tree().create_timer(1).timeout
 		$Button.visible = true
 
 func _on_button_pressed():
+	print("press")
+	$ColorRect.visible = true
+	$AnimationPlayer.play("fade_to_black")
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://scenes/credits.tscn")
 
 
-var STAGE0 = {
-	bgimage = "imagename",
-	dialogueblock = STAGE0dialogue
-}
-
-var STAGE1 = {
-	bgimage = "imagename",
-	dialogueblock = STAGE1dialogue
-}
-
-var STAGE2 = {
-	bgimage = "imagename",
-	dialogueblock = STAGE2dialogue
-}
-
-var STAGE3 = {
-	bgimage = "imagename",
-	dialogueblock = STAGE3dialogue
-}
 
 var STAGE0dialogue = "    STAGE 0 text line 1
 	STAGE 0 text line 2
@@ -79,42 +73,3 @@ var STAGE3dialogue = "    STAGE 3 text line 1
 	STAGE 3 text line 3
 	STAGE 3 text line 4
 	STAGE 3 text line 5"
-
-
-
-
-
-
-#extends Control
-#
-#var textindex = 0
-#
-#func _ready():
-	#print(Data.set_ending)
-	##change bg to ending specific: bgimage.texture = Data.set_ending.bgimage
-#
-#func _process(delta):
-	#null
-	##richtext.visibility += 1
-	##if richtext.visibility_ratio == 1
-		##textindex += 1
-#
-#func process_ending():
-	#null
-###NOTE: PROXY PSEUDOCODE
-	##textindex = 1
-	##textcontainer.visibility = true
-	##richtext.text = set_ending[textindex]
-	##if richtext.visibility_ratio == 1
-		###progress text on click
-	###if textindex > event1.size
-		###textcontainer.visibility = false
-#
-#func clickcontinue():
-	#null
-	##onclick
-		##if richtext.visibility_ratio < 1
-			##richtext.visibility_ratio = 1
-		##else:
-			##textindex += 1
-			##richtext.visibility = 0

@@ -3,14 +3,22 @@ extends Control
 
 
 @onready var click_counter: Label = $ClickCounter
-@onready var darkness: ColorRect = $Darkness
+@onready var darkness: TextureRect = $Darkness
 @onready var dialog: Control = $Dialog
 @onready var eggname_panel: Panel = $Eggname
+#@onready var animplayer : AnimationPlayer = $AnimationPlayer
+#@onready var rustling : AudioStreamPlayer = $Rustling
+
 
 var clicks = 0
 
 func _ready():
-	$Darkness.visible = true
+	darkness.visible = true
+	$Black.visible = false
+	Data.animplayer = $AnimationPlayer
+	Data.rustling = $Rustling
+	Data.environment = $Environment
+	Data.black = $Black
 
 
 func _process(_delta):
@@ -44,7 +52,7 @@ func _on_click_target_pressed():
 		dialog.activate_dialog.emit(clicks)
 	
 	if Data.clicks == Data.due_date:
-		Data.hatch()
+		hatch()
 
 
 
@@ -65,3 +73,50 @@ func _on_research_notes_pressed():
 func _on_egg_name_text_submitted(new_text: String) -> void:
 	Data.EggName = new_text
 	eggname_panel.hide()
+
+
+
+
+
+func darkness_transition_pt1():
+	$Darkness.modulate = Color(0, 0, 100, 0)
+	$Darkness.visible = true
+	$AnimationPlayer.play("fade_to_dark")
+	$Rustling.play()
+
+func darkness_transition_pt2():
+	await get_tree().create_timer(3).timeout
+	$AnimationPlayer.play("fade_from_dark")
+
+
+#func add_stimuli():
+	#if clicks == Data.TIMEVALUES.due_2weeks:
+		#print("added a blanket to the hatchery")
+		#darkness_transition_pt1()
+		#$Darkness.texture = ("res://assets/PROXYimage/WIPhatcheryscene3d.png")
+		#darkness_transition_pt2()
+	#if clicks == Data.TIMEVALUES.due_8weeks:
+		#print("added an mp3 player to the hatchery")
+		#darkness_transition_pt1()
+		#$Darkness.texture = ("res://assets/PROXYimage/WIPhatcheryscene3d.png")
+		##mp3playerbutton.disabled = false
+		#darkness_transition_pt2()
+	#if clicks == Data.TIMEVALUES.due_24weeks:
+		#print("added some plushies to the hatchery")
+		#darkness_transition_pt1()
+		#$Darkness.texture = ("res://assets/PROXYimage/WIPhatcheryscene3d.png")
+		##boopbutton.disabled = false
+		#darkness_transition_pt2()
+
+
+func hatch():
+	if clicks == Data.TIMEVALUES.due_2weeks + 48:
+		Data.set_ending = "STAGE 0"
+	if clicks == Data.TIMEVALUES.due_2weeks + 48:
+		Data.set_ending = "STAGE 1"
+	if clicks == Data.TIMEVALUES.due_2weeks + 48:
+		Data.set_ending = "STAGE 2"
+	if clicks == Data.TIMEVALUES.due_2weeks + 48:
+		Data.set_ending = "STAGE 3"
+	$AnimationPlayer.play("fade_to_black")
+	get_tree().change_scene_to_file("res://scenes/ending.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dijj7msso558g"]
+[gd_scene load_steps=27 format=3 uid="uid://dijj7msso558g"]
 
 [ext_resource type="Script" uid="uid://dljbefbqotbh5" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://nktkc3bvtxrg" path="res://assets/PROXYimage/WIPhatcheryscene3d.png" id="2_lnu2h"]
@@ -14,6 +14,13 @@
 [ext_resource type="AudioStream" uid="uid://cvx4dlrt7bln0" path="res://assets/SFX/EggTap_3.ogg" id="8_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://ipin1b8bpx1g" path="res://assets/SFX/PaperSwish_3.ogg" id="8_trtic"]
 [ext_resource type="AudioStream" uid="uid://dhvjuwnq35awu" path="res://assets/SFX/EggTap_4.ogg" id="9_dinhu"]
+[ext_resource type="AudioStream" uid="uid://dcqqfjoffisbn" path="res://assets/SFX/GeneralRustling.ogg" id="15_ir15t"]
+
+[sub_resource type="Gradient" id="Gradient_trtic"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ir15t"]
+gradient = SubResource("Gradient_trtic")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ca42v"]
 playback_mode = 2
@@ -34,6 +41,102 @@ stream_1/stream = ExtResource("7_vtaks")
 stream_2/stream = ExtResource("8_kvpfn")
 stream_3/stream = ExtResource("9_dinhu")
 
+[sub_resource type="Animation" id="Animation_trtic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Darkness:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ir15t"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ca42v"]
+resource_name = "fade_to_dark"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Darkness:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rysoc"]
+resource_name = "fade_from_dark"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Darkness:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ssvqc"]
+resource_name = "fade_from_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ca42v"]
+_data = {
+&"RESET": SubResource("Animation_trtic"),
+&"fade_from_black": SubResource("Animation_ssvqc"),
+&"fade_from_dark": SubResource("Animation_rysoc"),
+&"fade_to_black": SubResource("Animation_ir15t"),
+&"fade_to_dark": SubResource("Animation_ca42v")
+}
+
 [node name="GAME" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -43,7 +146,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uwrxv")
 
-[node name="PROXYenvr" type="TextureRect" parent="."]
+[node name="Environment" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,34 +260,6 @@ offset_top = -300.0
 offset_right = 500.0
 offset_bottom = 300.0
 
-[node name="TimeDisplay" parent="." instance=ExtResource("4_iywne")]
-position = Vector2(1561, 870)
-rotation = -0.49652
-scale = Vector2(1.79407, 1.79407)
-skew = -0.617847
-
-[node name="Darkness" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Lightswitch" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 141.0
-offset_top = -156.0
-offset_right = 431.0
-grow_vertical = 0
-focus_mode = 0
-theme = ExtResource("3_iywne")
-
 [node name="Eggname" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -222,6 +297,43 @@ text = "Name Your Creation"
 layout_mode = 2
 alignment = 1
 
+[node name="Darkness" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ir15t")
+
+[node name="TimeDisplay" parent="." instance=ExtResource("4_iywne")]
+position = Vector2(1561, 870)
+rotation = -0.49652
+scale = Vector2(1.79407, 1.79407)
+skew = -0.617847
+
+[node name="Lightswitch" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 141.0
+offset_top = -156.0
+offset_right = 431.0
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("3_iywne")
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="LightSwitch" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ca42v")
 
@@ -231,7 +343,15 @@ stream = SubResource("AudioStreamRandomizer_ir15t")
 [node name="EggTap" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_kvuet")
 
+[node name="Rustling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_ir15t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ca42v")
+}
+
 [connection signal="pressed" from="ClickTarget" to="." method="_on_click_target_pressed"]
 [connection signal="pressed" from="ResearchNotesButton" to="." method="_on_research_notes_pressed"]
-[connection signal="pressed" from="Lightswitch" to="." method="_on_lightswitch_pressed"]
 [connection signal="text_submitted" from="Eggname/VBoxContainer/LineEdit" to="." method="_on_egg_name_text_submitted"]
+[connection signal="pressed" from="Lightswitch" to="." method="_on_lightswitch_pressed"]
