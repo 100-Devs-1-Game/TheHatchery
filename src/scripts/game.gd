@@ -29,7 +29,22 @@ func _process(_delta):
 	else:
 		click_counter.text = str(clicks) + " clicks"
 	
-	#richtext.visibility += 1
+	if Data.current_stage == "STAGE 0":
+		$Environment.play("STAGE0")
+		$Egg.play("still0")
+		$Darkness.texture = load("res://assets/images/STAGE01dark.png")
+	if Data.current_stage == "STAGE 1":
+		$Environment.play("STAGE1")
+		$Egg.play("still1")
+		$Darkness.texture = load("res://assets/images/STAGE01dark.png")
+	if Data.current_stage == "STAGE 2":
+		$Environment.play("STAGE2")
+		$Egg.play("still1")
+		$Darkness.texture = load("res://assets/images/STAGE2dark.png")
+	if Data.current_stage == "STAGE 3":
+		$Environment.play("STAGE3")
+		$Egg.play("still1")
+		$Darkness.texture = load("res://assets/images/STAGE3dark.png")
 
 
 func _on_lightswitch_pressed():

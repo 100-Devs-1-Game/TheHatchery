@@ -2,6 +2,8 @@ extends Node
 
 var clickvalue : int = 1
 
+var current_stage = "STAGE 0"
+
 var eggclickable : bool = true
 var clicks : int = 0
 var event1passed : bool = false
